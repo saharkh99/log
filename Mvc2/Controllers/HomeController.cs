@@ -4,25 +4,22 @@ using System.Linq;
 using System.Web;
 using Mvc2.Models;
 using System.Web.Mvc;
+using System.Data;
+using System.Configuration;
+using System.Data.SqlClient;
+
 
 namespace Mvc2.Controllers
 {
+    
     public class HomeController : Controller
     {
-        UserEntities us = new UserEntities();
-       private static CodeGenerator cg1 = new CodeGenerator();
 
-       public void insert(user user) {
-
-
-           us.users.Add(user);
-           us.SaveChanges();
-                   
-       }
-
+        Database1Entities us = new Database1Entities();
+      // private static CodeGenerator cg1 = new CodeGenerator();
         public String Login(user login)
         {
-            using (UserEntities us = new UserEntities())
+            using (Database1Entities us = new Database1Entities())
             {
 
                 var lusername = us.users.Where(a => a.username == login.username).FirstOrDefault();
@@ -42,6 +39,12 @@ namespace Mvc2.Controllers
             }
         
         }
+       // public string insert() {
+
+         //   user u = new user();
+           // return u.InsertRegDetails();
+        
+        //}
    //     public String setCode() {
          
     //        cg1.code = cg1.generator();

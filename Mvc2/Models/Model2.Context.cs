@@ -13,10 +13,10 @@ namespace Mvc2.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class UserEntities : DbContext
+    public partial class Database1Entities : DbContext
     {
-        public UserEntities()
-            : base("name=UserEntities")
+        public Database1Entities()
+            : base("name=Database1Entities")
         {
         }
     
@@ -26,6 +26,5 @@ namespace Mvc2.Models
         }
     
         public DbSet<user> users { get; set; }
-
     }
 }
