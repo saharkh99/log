@@ -20,3 +20,17 @@ c:\users\sahar\documents\visual studio 2012\Projects\Mvc2\Mvc2\obj\Debug\Mvc2.cs
 c:\users\sahar\documents\visual studio 2012\Projects\Mvc2\Mvc2\obj\Debug\Mvc2.dll
 c:\users\sahar\documents\visual studio 2012\Projects\Mvc2\Mvc2\obj\Debug\Mvc2.pdb
 C:\Users\sahar\Documents\Visual Studio 2012\Projects\Mvc2\Mvc2\bin\Ghasedak.dll
+C:\Users\sahar\documents\visual studio 2012\Projects\Mvc2\Mvc2\bin\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\sahar\documents\visual studio 2012\Projects\Mvc2\Mvc2\bin\Microsoft.IdentityModel.Logging.dll
+C:\Users\sahar\documents\visual studio 2012\Projects\Mvc2\Mvc2\bin\Microsoft.IdentityModel.Tokens.dll
+C:\Users\sahar\documents\visual studio 2012\Projects\Mvc2\Mvc2\bin\Newtonsoft.Json.dll
+C:\Users\sahar\documents\visual studio 2012\Projects\Mvc2\Mvc2\bin\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\sahar\documents\visual studio 2012\Projects\Mvc2\Mvc2\bin\System.Net.Http.Formatting.dll
+C:\Users\sahar\documents\visual studio 2012\Projects\Mvc2\Mvc2\bin\System.Web.Http.dll
+C:\Users\sahar\documents\visual studio 2012\Projects\Mvc2\Mvc2\bin\Microsoft.IdentityModel.JsonWebTokens.xml
+C:\Users\sahar\documents\visual studio 2012\Projects\Mvc2\Mvc2\bin\Microsoft.IdentityModel.Logging.xml
+C:\Users\sahar\documents\visual studio 2012\Projects\Mvc2\Mvc2\bin\Microsoft.IdentityModel.Tokens.xml
+C:\Users\sahar\documents\visual studio 2012\Projects\Mvc2\Mvc2\bin\Newtonsoft.Json.xml
+C:\Users\sahar\documents\visual studio 2012\Projects\Mvc2\Mvc2\bin\System.IdentityModel.Tokens.Jwt.xml
+C:\Users\sahar\documents\visual studio 2012\Projects\Mvc2\Mvc2\bin\System.Net.Http.Formatting.xml
+C:\Users\sahar\documents\visual studio 2012\Projects\Mvc2\Mvc2\bin\System.Web.Http.xml
