@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Database1Model1" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="Database1Entities1" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="Tables" EntityType="Database1Model1.Table" />
+    <EntitySet Name="users" EntityType="Database1Model1.user" />
+    <AssociationSet Name="FK__Table__username__36B12243" Association="Database1Model1.FK__Table__username__36B12243">
+      <End Role="users" EntitySet="users" />
+      <End Role="Table" EntitySet="Tables" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Table">
+    <Key>
+      <PropertyRef Name="username" />
+    </Key>
+    <Property Name="username" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="roles" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="user" Relationship="Database1Model1.FK__Table__username__36B12243" FromRole="Table" ToRole="users" />
+  </EntityType>
+  <EntityType Name="user">
+    <Key>
+      <PropertyRef Name="username" />
+    </Key>
+    <Property Name="username" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="passwords" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="roles" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="Table" Relationship="Database1Model1.FK__Table__username__36B12243" FromRole="users" ToRole="Table" />
+  </EntityType>
+  <Association Name="FK__Table__username__36B12243">
+    <End Role="users" Type="Database1Model1.user" Multiplicity="1" />
+    <End Role="Table" Type="Database1Model1.Table" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="username" />
+      </Principal>
+      <Dependent Role="Table">
+        <PropertyRef Name="username" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

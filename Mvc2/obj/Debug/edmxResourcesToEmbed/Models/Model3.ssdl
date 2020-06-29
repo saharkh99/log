@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Database1Model1.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="Database1Model1StoreContainer">
+    <EntitySet Name="Table" EntityType="Database1Model1.Store.Table" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="users" EntityType="Database1Model1.Store.users" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK__Table__username__36B12243" Association="Database1Model1.Store.FK__Table__username__36B12243">
+      <End Role="users" EntitySet="users" />
+      <End Role="Table" EntitySet="Table" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Table">
+    <Key>
+      <PropertyRef Name="username" />
+    </Key>
+    <Property Name="username" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="roles" Type="varchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="users">
+    <Key>
+      <PropertyRef Name="username" />
+    </Key>
+    <Property Name="username" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="passwords" Type="varchar" MaxLength="50" />
+    <Property Name="roles" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK__Table__username__36B12243">
+    <End Role="users" Type="Database1Model1.Store.users" Multiplicity="1" />
+    <End Role="Table" Type="Database1Model1.Store.Table" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="username" />
+      </Principal>
+      <Dependent Role="Table">
+        <PropertyRef Name="username" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

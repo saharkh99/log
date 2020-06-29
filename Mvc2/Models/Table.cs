@@ -12,12 +12,11 @@ namespace Mvc2.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class user
+    public partial class Table
     {
         public string username { get; set; }
-        public string passwords { get; set; }
         public string roles { get; set; }
     
-        public virtual Table Table { get; set; }
+        public virtual user user { get; set; }
     }
 }

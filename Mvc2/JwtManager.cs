@@ -13,17 +13,16 @@ namespace WebApi.Jwt
     {
         private const string Secret = "db3OIsj+BXE9NZDy0t8W3TcNekrF+2d/1sFnWG4HnV8TZY30iTOdtVWJG8abWvB1GlOgJuQZdcF2Luqm/hccMw==";
 
-        public static string GenerateToken(string username, int expireMinutes = 20)
+        public static string GenerateToken(string username, string roles,int expireMinutes = 20)
         {
             var symmetricKey = Convert.FromBase64String(Secret);
             var tokenHandler = new JwtSecurityTokenHandler();
-
             var now = DateTime.UtcNow;
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(new[]
         {
-            new Claim(ClaimTypes.Name, username)
+            new Claim(ClaimTypes.Role, roles)
         }),
 
                 Expires = now.AddMinutes(Convert.ToInt32(expireMinutes)),
@@ -38,5 +37,56 @@ namespace WebApi.Jwt
 
             return token;
         }
+
+        public static ClaimsPrincipal GetPrincipal(string token)
+        {
+            try
+            {
+                JwtSecurityTokenHandler tokenHandler = new JwtSecurityTokenHandler();
+                JwtSecurityToken jwtToken = (JwtSecurityToken)tokenHandler.ReadToken(token);
+                if (jwtToken == null)
+                    return null;
+                byte[] key = Convert.FromBase64String(Secret);
+                TokenValidationParameters parameters = new TokenValidationParameters()
+                {
+                    RequireExpirationTime = true,
+                    ValidateIssuer = false,
+                    ValidateAudience = false,
+                    IssuerSigningKey = new SymmetricSecurityKey(key)
+                };
+                SecurityToken securityToken;
+                ClaimsPrincipal principal = tokenHandler.ValidateToken(token,
+                      parameters, out securityToken);
+                return principal;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public static string ValidateToken(string token)
+        {
+            string roles = null;
+            ClaimsPrincipal principal = GetPrincipal(token);
+            if (principal == null)
+                return null;
+            ClaimsIdentity identity = null;
+            try
+            {
+                identity = (ClaimsIdentity)principal.Identity;
+            }
+            catch (NullReferenceException)
+            {
+                return "xx";
+            }
+            Claim usernameClaim = identity.FindFirst(ClaimTypes.Role);
+            roles = usernameClaim.Value;
+            return roles;
+        }  
+          
+
+        }
+      
     }
-}
+
