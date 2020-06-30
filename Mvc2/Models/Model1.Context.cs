@@ -13,10 +13,10 @@ namespace Mvc2.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class UserEntities : DbContext
+    public partial class Database1Entities2 : DbContext
     {
-        public UserEntities()
-            : base("name=UserEntities")
+        public Database1Entities2()
+            : base("name=Database1Entities2")
         {
         }
     
@@ -25,7 +25,7 @@ namespace Mvc2.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public DbSet<servicess> servicesses { get; set; }
         public DbSet<user> users { get; set; }
-
     }
 }

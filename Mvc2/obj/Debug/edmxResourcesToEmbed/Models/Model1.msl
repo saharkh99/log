@@ -1,11 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="UserModelStoreContainer" CdmEntityContainer="UserEntities">
+  <EntityContainerMapping StorageEntityContainer="Database1ModelStoreContainer" CdmEntityContainer="Database1Entities2">
+    <EntitySetMapping Name="servicesses">
+      <EntityTypeMapping TypeName="Database1Model.servicess">
+        <MappingFragment StoreEntitySet="servicess">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="accesslevel" ColumnName="accesslevel" />
+          <ScalarProperty Name="parent" ColumnName="parent" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="users">
-      <EntityTypeMapping TypeName="UserModel.user">
+      <EntityTypeMapping TypeName="Database1Model.user">
         <MappingFragment StoreEntitySet="users">
           <ScalarProperty Name="username" ColumnName="username" />
           <ScalarProperty Name="passwords" ColumnName="passwords" />
+          <ScalarProperty Name="roles" ColumnName="roles" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

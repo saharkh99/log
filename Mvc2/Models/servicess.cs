@@ -12,10 +12,11 @@ namespace Mvc2.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class user
+    public partial class servicess
     {
-        public string username { get; set; }
-        public string passwords { get; set; }
-        public string roles { get; set; }
+        public int Id { get; set; }
+        public string name { get; set; }
+        public Nullable<int> accesslevel { get; set; }
+        public string parent { get; set; }
     }
 }

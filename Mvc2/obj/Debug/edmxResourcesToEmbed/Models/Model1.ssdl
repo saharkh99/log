@@ -1,13 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="UserModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <EntityContainer Name="UserModelStoreContainer">
-    <EntitySet Name="users" EntityType="UserModel.Store.users" store:Type="Tables" Schema="dbo" />
+<Schema Namespace="Database1Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="Database1ModelStoreContainer">
+    <EntitySet Name="servicess" EntityType="Database1Model.Store.servicess" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="users" EntityType="Database1Model.Store.users" store:Type="Tables" Schema="dbo" />
   </EntityContainer>
+  <EntityType Name="servicess">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="50" />
+    <Property Name="accesslevel" Type="int" />
+    <Property Name="parent" Type="varchar" MaxLength="50" />
+  </EntityType>
   <EntityType Name="users">
     <Key>
       <PropertyRef Name="username" />
     </Key>
-    <Property Name="username" Type="varchar" Nullable="false" MaxLength="30" />
-    <Property Name="passwords" Type="varchar" Nullable="false" MaxLength="30" />
+    <Property Name="username" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="passwords" Type="varchar" MaxLength="50" />
+    <Property Name="roles" Type="varchar" MaxLength="50" />
   </EntityType>
 </Schema>

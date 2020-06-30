@@ -4,43 +4,76 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="UserModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityContainer Name="UserModelStoreContainer">
-          <EntitySet Name="users" EntityType="UserModel.Store.users" store:Type="Tables" Schema="dbo" />
+      <Schema Namespace="Database1Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="Database1ModelStoreContainer">
+          <EntitySet Name="servicess" EntityType="Database1Model.Store.servicess" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="users" EntityType="Database1Model.Store.users" store:Type="Tables" Schema="dbo" />
         </EntityContainer>
+        <EntityType Name="servicess">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+          <Property Name="accesslevel" Type="int" />
+          <Property Name="parent" Type="varchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="users">
           <Key>
             <PropertyRef Name="username" />
           </Key>
-          <Property Name="username" Type="varchar" Nullable="false" MaxLength="30" />
-          <Property Name="passwords" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="username" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="passwords" Type="varchar" MaxLength="50" />
+          <Property Name="roles" Type="varchar" MaxLength="50" />
         </EntityType>
       </Schema>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="UserModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="UserEntities" p1:LazyLoadingEnabled="true">
-          <EntitySet Name="users" EntityType="UserModel.user" />
+      <Schema Namespace="Database1Model" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="Database1Entities2" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="servicesses" EntityType="Database1Model.servicess" />
+          <EntitySet Name="users" EntityType="Database1Model.user" />
         </EntityContainer>
+        <EntityType Name="servicess">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="accesslevel" Type="Int32" />
+          <Property Name="parent" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+        </EntityType>
         <EntityType Name="user">
           <Key>
             <PropertyRef Name="username" />
           </Key>
-          <Property Name="username" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
-          <Property Name="passwords" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="username" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="passwords" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="roles" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="UserModelStoreContainer" CdmEntityContainer="UserEntities">
+        <EntityContainerMapping StorageEntityContainer="Database1ModelStoreContainer" CdmEntityContainer="Database1Entities2">
+          <EntitySetMapping Name="servicesses">
+            <EntityTypeMapping TypeName="Database1Model.servicess">
+              <MappingFragment StoreEntitySet="servicess">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="accesslevel" ColumnName="accesslevel" />
+                <ScalarProperty Name="parent" ColumnName="parent" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="users">
-            <EntityTypeMapping TypeName="UserModel.user">
+            <EntityTypeMapping TypeName="Database1Model.user">
               <MappingFragment StoreEntitySet="users">
                 <ScalarProperty Name="username" ColumnName="username" />
                 <ScalarProperty Name="passwords" ColumnName="passwords" />
+                <ScalarProperty Name="roles" ColumnName="roles" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
