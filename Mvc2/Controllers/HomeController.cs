@@ -19,13 +19,13 @@ namespace WebApi.Jwt.Controllers
     public class HomeController : Controller
     {
         private const string Secret = "eyJhbGciOiJIUzI1NiJ9.e30.H4c7AhHbO2rWmVVG7LFtXNcfFMrRbWEcV36u3tMU6d4";
-        Database1Entities2 us = new Database1Entities2();
+        Database1Entities3 us = new Database1Entities3();
       // private static CodeGenerator cg1 = new CodeGenerator();
          
          
         public String Login(user login)
         {
-            using (Database1Entities2 us = new Database1Entities2())
+            using (Database1Entities3 us = new Database1Entities3())
             {
                 
                 var lusername = us.users.Where(a => a.username == login.username).FirstOrDefault();
@@ -60,14 +60,14 @@ namespace WebApi.Jwt.Controllers
 
          public JsonResult Get(string token)
          {
-             using (Database1Entities2 us = new Database1Entities2())
+             using (Database1Entities3 us = new Database1Entities3())
              {
-                 List<string> list;
+                 List<servicess> list;
                  if (JwtManager.ValidateToken(token).Equals("developer"))
                  {
 
 
-                     list = us.servicesses.Where(a => (a.parent.Equals("itpart") && a.accesslevel==1) || (a.parent.Equals("general"))).Select(x => x.name).ToList();
+                     list = us.servicesses.Where(a => (a.parent.Equals("itpart") && a.accesslevel == 1) || (a.parent.Equals("general")) || (a.parent.Equals("entpart"))).ToList();
                     var jsondata = Json(list, JsonRequestBehavior.AllowGet);
                     return jsondata;
                      
@@ -76,7 +76,7 @@ namespace WebApi.Jwt.Controllers
                  {
 
 
-                     list = us.servicesses.Where(a => (a.parent.Equals("itpart") && a.accesslevel==2) || (a.parent.Equals("general"))).Select(x => x.name).ToList();
+                     list = us.servicesses.Where(a => (a.parent.Equals("itpart") && a.accesslevel == 3) || (a.parent.Equals("general")) || (a.parent.Equals("entpart"))).ToList();
                      var jsondata = Json(list, JsonRequestBehavior.AllowGet);
                      return jsondata;
 
@@ -85,16 +85,16 @@ namespace WebApi.Jwt.Controllers
                  {
 
 
-                     list = us.servicesses.Where(a => (a.parent.Equals("trainingpart") && a.accesslevel==1) || (a.parent.Equals("general"))).Select(x => x.name).ToList();
+                     list = us.servicesses.Where(a => (a.parent.Equals("trainingpart") && a.accesslevel == 1) || (a.parent.Equals("general")) || (a.parent.Equals("entpart"))).ToList();
                      var jsondata = Json(list, JsonRequestBehavior.AllowGet);
                      return jsondata;
 
                  }
-                 else if (JwtManager.ValidateToken(token).Equals("productowner"))
+                 else if (JwtManager.ValidateToken(token).Equals("seniDev"))
                  {
 
 
-                     list = us.servicesses.Where(a => (a.parent.Equals("itpart") && a.accesslevel==1) || (a.parent.Equals("general"))).Select(x => x.name).ToList();
+                     list = us.servicesses.Where(a => (a.parent.Equals("itpart") && a.accesslevel == 1) || (a.parent.Equals("general")) || (a.parent.Equals("entpart"))).ToList();
                      var jsondata = Json(list, JsonRequestBehavior.AllowGet);
                      return jsondata;
 
@@ -103,7 +103,7 @@ namespace WebApi.Jwt.Controllers
                  {
 
 
-                     list = us.servicesses.Where(a => (a.parent.Equals("itpart") && a.accesslevel==1) || (a.parent.Equals("general"))).Select(x => x.name).ToList();
+                     list = us.servicesses.Where(a => (a.parent.Equals("receppart") && a.accesslevel == 1) || (a.parent.Equals("general")) || (a.parent.Equals("entpart"))).ToList();
                      var jsondata = Json(list, JsonRequestBehavior.AllowGet);
                      return jsondata;
 

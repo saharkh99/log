@@ -13,10 +13,10 @@ namespace Mvc2.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Database1Entities2 : DbContext
+    public partial class Database1Entities3 : DbContext
     {
-        public Database1Entities2()
-            : base("name=Database1Entities2")
+        public Database1Entities3()
+            : base("name=Database1Entities3")
         {
         }
     
