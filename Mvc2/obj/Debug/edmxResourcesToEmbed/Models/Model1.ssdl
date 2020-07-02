@@ -9,16 +9,17 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" Nullable="false" />
-    <Property Name="name" Type="varchar" MaxLength="50" />
-    <Property Name="accesslevel" Type="int" />
-    <Property Name="parent" Type="varchar" MaxLength="50" />
+    <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="accesslevel" Type="nchar" Nullable="false" MaxLength="10" />
+    <Property Name="parent" Type="nvarchar" Nullable="false" MaxLength="50" />
   </EntityType>
   <EntityType Name="users">
     <Key>
       <PropertyRef Name="username" />
     </Key>
     <Property Name="username" Type="varchar" Nullable="false" MaxLength="50" />
-    <Property Name="passwords" Type="varchar" MaxLength="50" />
-    <Property Name="roles" Type="varchar" MaxLength="50" />
+    <Property Name="passwords" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="name" Type="nvarchar" MaxLength="50" />
+    <Property Name="roles" Type="nvarchar" MaxLength="50" />
   </EntityType>
 </Schema>

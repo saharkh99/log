@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="Database1ModelStoreContainer" CdmEntityContainer="Database1Entities3">
+  <EntityContainerMapping StorageEntityContainer="Database1ModelStoreContainer" CdmEntityContainer="Database1Entities6">
     <EntitySetMapping Name="servicesses">
       <EntityTypeMapping TypeName="Database1Model.servicess">
         <MappingFragment StoreEntitySet="servicess">
@@ -16,6 +16,7 @@
         <MappingFragment StoreEntitySet="users">
           <ScalarProperty Name="username" ColumnName="username" />
           <ScalarProperty Name="passwords" ColumnName="passwords" />
+          <ScalarProperty Name="name" ColumnName="name" />
           <ScalarProperty Name="roles" ColumnName="roles" />
         </MappingFragment>
       </EntityTypeMapping>

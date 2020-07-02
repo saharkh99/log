@@ -13,7 +13,7 @@ namespace WebApi.Jwt
     {
         private const string Secret = "db3OIsj+BXE9NZDy0t8W3TcNekrF+2d/1sFnWG4HnV8TZY30iTOdtVWJG8abWvB1GlOgJuQZdcF2Luqm/hccMw==";
 
-        public static string GenerateToken(string username, string roles,int expireMinutes = 20)
+        public static string GenerateToken(string name,string username, string roles,int expireMinutes = 20)
         {
             var symmetricKey = Convert.FromBase64String(Secret);
             var tokenHandler = new JwtSecurityTokenHandler();
@@ -22,7 +22,9 @@ namespace WebApi.Jwt
             {
                 Subject = new ClaimsIdentity(new[]
         {
-            new Claim(ClaimTypes.Role, roles)
+            new Claim(ClaimTypes.Role, roles),
+            new Claim(ClaimTypes.Name, name)
+           
         }),
 
                 Expires = now.AddMinutes(Convert.ToInt32(expireMinutes)),

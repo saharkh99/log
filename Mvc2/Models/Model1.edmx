@@ -14,24 +14,25 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="name" Type="varchar" MaxLength="50" />
-          <Property Name="accesslevel" Type="int" />
-          <Property Name="parent" Type="varchar" MaxLength="50" />
+          <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="accesslevel" Type="nchar" Nullable="false" MaxLength="10" />
+          <Property Name="parent" Type="nvarchar" Nullable="false" MaxLength="50" />
         </EntityType>
         <EntityType Name="users">
           <Key>
             <PropertyRef Name="username" />
           </Key>
           <Property Name="username" Type="varchar" Nullable="false" MaxLength="50" />
-          <Property Name="passwords" Type="varchar" MaxLength="50" />
-          <Property Name="roles" Type="varchar" MaxLength="50" />
+          <Property Name="passwords" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" />
+          <Property Name="roles" Type="nvarchar" MaxLength="50" />
         </EntityType>
       </Schema>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Database1Model" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="Database1Entities3" p1:LazyLoadingEnabled="true">
+        <EntityContainer Name="Database1Entities6" p1:LazyLoadingEnabled="true">
           <EntitySet Name="servicesses" EntityType="Database1Model.servicess" />
           <EntitySet Name="users" EntityType="Database1Model.user" />
         </EntityContainer>
@@ -40,24 +41,25 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="name" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
-          <Property Name="accesslevel" Type="Int32" />
-          <Property Name="parent" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="accesslevel" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="parent" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
         </EntityType>
         <EntityType Name="user">
           <Key>
             <PropertyRef Name="username" />
           </Key>
           <Property Name="username" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
-          <Property Name="passwords" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
-          <Property Name="roles" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="passwords" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="name" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="roles" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Database1ModelStoreContainer" CdmEntityContainer="Database1Entities3">
+        <EntityContainerMapping StorageEntityContainer="Database1ModelStoreContainer" CdmEntityContainer="Database1Entities6">
           <EntitySetMapping Name="servicesses">
             <EntityTypeMapping TypeName="Database1Model.servicess">
               <MappingFragment StoreEntitySet="servicess">
@@ -73,6 +75,7 @@
               <MappingFragment StoreEntitySet="users">
                 <ScalarProperty Name="username" ColumnName="username" />
                 <ScalarProperty Name="passwords" ColumnName="passwords" />
+                <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="roles" ColumnName="roles" />
               </MappingFragment>
             </EntityTypeMapping>

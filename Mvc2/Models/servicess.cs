@@ -16,7 +16,7 @@ namespace Mvc2.Models
     {
         public int Id { get; set; }
         public string name { get; set; }
-        public Nullable<int> accesslevel { get; set; }
+        public string accesslevel { get; set; }
         public string parent { get; set; }
     }
 }
