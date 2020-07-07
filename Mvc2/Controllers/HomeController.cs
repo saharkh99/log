@@ -20,10 +20,7 @@ namespace WebApi.Jwt.Controllers
     {
         private const string Secret = "eyJhbGciOiJIUzI1NiJ9.e30.H4c7AhHbO2rWmVVG7LFtXNcfFMrRbWEcV36u3tMU6d4";
         Database1Entities6 us = new Database1Entities6();
-        
-      // private static CodeGenerator cg1 = new CodeGenerator();
-         
-         
+                  
         public String Login(user login)
         {
             using (Database1Entities6 us = new Database1Entities6())
@@ -45,20 +42,8 @@ namespace WebApi.Jwt.Controllers
         
         }
         
-       // public string insert() {
-
-         //   user u = new user();
-           // return u.InsertRegDetails();
-        
-        //}
-   //     public String setCode() {
-         
-    //        cg1.code = cg1.generator();
-     //       return cg1.code;
-    //    }
-
-
-
+ 
+         //sending services
          public JsonResult Get(string token)
          {
              using (Database1Entities6 us = new Database1Entities6())
@@ -124,16 +109,6 @@ namespace WebApi.Jwt.Controllers
          }  
 
 
-
-     //   public String getCode(CodeGenerator cg)
-     //   {
-         
-     //       if (cg.code == cg1.code)
-     //           return "true";
-       //     else
-       //         return "false";
-            
-     //   }
 
     }
 }

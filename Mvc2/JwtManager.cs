@@ -13,7 +13,7 @@ namespace WebApi.Jwt
     {
         private const string Secret = "db3OIsj+BXE9NZDy0t8W3TcNekrF+2d/1sFnWG4HnV8TZY30iTOdtVWJG8abWvB1GlOgJuQZdcF2Luqm/hccMw==";
 
-        public static string GenerateToken(string name,string username, string roles,int expireMinutes = 20)
+        public static string GenerateToken(string name,string username, string roles,int expireMinutes = 60)
         {
             var symmetricKey = Convert.FromBase64String(Secret);
             var tokenHandler = new JwtSecurityTokenHandler();
@@ -80,14 +80,13 @@ namespace WebApi.Jwt
             }
             catch (NullReferenceException)
             {
-                return "xx";
+                return "";
             }
             Claim usernameClaim = identity.FindFirst(ClaimTypes.Role);
             roles = usernameClaim.Value;
             return roles;
         }  
           
-
         }
       
     }
